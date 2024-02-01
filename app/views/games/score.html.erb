@@ -1,5 +1,14 @@
 <h1>Result</h1>
-<%# <p>Sorry but <%=  %> can't be built out of <%= @letters.join(",") %></p> %>
+
+<div class="result" >
+  <% if @include_letters && @word_found %>
+    <p>Congratulations, the word <%= @word.upcase %> is correct!</p>
+  <% elsif !@word_found %>
+    <p>Sorry, but <strong><%= @word.upcase %></strong> isn't a valid English word!</p>
+  <% else %>
+    <p>Sorry, but <strong><%= @word.upcase %></strong> can't be built out of <%= @letters.join(", ")%> !</p>
+  <% end %>
+</div>
 
 
-<%= link_to "Play again", new_path %>
+<button type="button" class="btn btn-primary m-4" ><%= link_to "Play again", new_path %></button>
